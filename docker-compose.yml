@@ -1,0 +1,75 @@
+version: '2.0'
+services:
+ 
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cloudsigma.com/php
+    container_name: app-net-monitoring
+    restart: unless-stopped
+    tty: true
+    environment:
+      working_dir: /var/www/html/
+    volumes:
+       - ./:/var/www/html/
+       - ./php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
+    networks:
+      - app-network
+    depends_on:
+      - db
+      - phpmyadmin
+ 
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver-net-monitoring
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "92:92"
+      - "444:444"
+    volumes:
+      - ./:/var/www/html/
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+  #MySQL Service
+  db:
+      image: mysql:5.7.32
+      container_name: db-net-monitoring
+      restart: unless-stopped
+      tty: true
+      ports:
+        - '${FORWARD_DB_PORT:-5680}:5680'
+      environment:
+        MYSQL_DATABASE: pickaroo
+        MYSQL_ROOT_PASSWORD: password
+        SERVICE_TAGS: dev
+        SERVICE_NAME: mysql
+      volumes:
+        - dbdata:/var/lib/mysql/
+        - ./mysql/my.cnf:/etc/mysql/my.cnf
+      networks:
+        - app-network
+  
+  phpmyadmin:
+        image: phpmyadmin:5.2.0-apache
+        container_name: phpmyadmin-net-monitoring
+        ports:
+            - 8115:80
+        networks:
+            - app-network
+        environment:
+            - PMA_ARBITRARY=1
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
