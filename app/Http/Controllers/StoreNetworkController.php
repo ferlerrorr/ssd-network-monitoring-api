@@ -58,7 +58,7 @@ class StoreNetworkController extends Controller
     public function networkprompt(Request $request, $store_code)
 
     {
-        $clientIP = $request->getClientIp();
+        $clientIP = $request->getClientIp(true);
 
         $store_code = $store_code;
         $network_promt = StoreNetwork::where('store_code', $store_code)->get();
@@ -90,7 +90,8 @@ class StoreNetworkController extends Controller
 
                 [
                     "store_code" => $store_code,
-                    "current_ip" => $clientIP
+                    "current_ip" => $clientIP,
+                    "previous_ip" =>  $clientIP
                 ]
             );
 
