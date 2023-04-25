@@ -1,0 +1,228 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@media (min-width: 1200px) {
+  .table-container {
+    max-width: 1380px;
+  }
+}
+
+.fixed-width {
+  width: 210px;
+}
+
+.table-container {
+  width: 100%;
+  padding-top: 0.8em;
+  padding-right: 15px;
+  padding-bottom: 2em;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body {
+  padding: 10px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+.title-header {
+  display: flex;
+  justify-content: center;
+  padding-top: 5em;
+  letter-spacing: 1.3px;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+  animation: fadeIn .7s;
+
+}
+
+.table-bordered thead td,
+.table-bordered thead th {
+  border-bottom-width: 2px;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dee2e6;
+}
+.table td,
+.table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+th {
+  text-align: inherit;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: -internal-center;
+  letter-spacing: 1.3px;
+}
+
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dee2e6;
+}
+.table td,
+.table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+td {
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+.store-code {
+  text-transform: uppercase;
+  font-weight: 650;
+  letter-spacing: 1.4px;
+}
+
+@media only screen and (max-width: 968px) {
+
+  
+.title-header {
+  padding-top: .3em;
+}
+
+  .new-table thead {
+    display: none;
+  }
+  .new-table tr {
+    border-bottom: 30px solid #fff;
+  }
+  .new-table tr td {
+    display: block;
+    border: 1px solid #ccc;
+  }
+  .new-table tr td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+  }
+}
+
+/* .loader {
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.1s ease-in;
+  border: 2px solid #212529;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin: auto;
+  margin-top: 25px;
+  animation: loader 0.5s infinite alternate;
+}
+
+.loader.show {
+  visibility: visible;
+  opacity: 1;
+} */
+
+.red {
+  background-color: var(--red);
+  color: #dee2e6;
+}
+
+.green {
+  background-color: var(--success);
+  color: #dee2e6;
+}
+
+.connection {
+  font-weight: 600;
+  letter-spacing: 1.4px;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
